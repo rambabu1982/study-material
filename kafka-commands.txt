@@ -1,0 +1,33 @@
+kafka-topics --list --bootstrap-server localhost:9092
+
+kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic first-topic
+
+kafka-topics --describe --bootstrap-server localhost:9092 --topic first-topic
+
+kafka-console-consumer --bootstrap-server localhost:9092 --topic first-topic
+
+kafka-console-producer --broker-list localhost:9092 --topic first-topic
+
+kafka-topics --delete --bootstrap-server localhost:9092 --topic first-topic                           
+
+Note:
+
+For delete add the following in kafka server.properties
+
+delete.topic.enable=true
+
+
+record has below 7 components:
+ 1. topic --record should written
+ 2. partion
+ 3. offset
+ 4. timestamp
+ 5. key
+ 6. header
+ 7. value
+ 
+ run zookeeper: zookeeper-server-start D:\installed\kafka\config\zookeeper.properties
+ run kafka-server: kafka-server-start D:\installed\kafka\config\server.properties
+ topic-creation: kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic kafka-demo
+ run producer: kafka-console-producer --bootstrap-server localhost:9092 --topic kafka-demo
+ run consumer: kafka-console-consumer --bootstrap-server localhost:9092 --topic kafka-demo

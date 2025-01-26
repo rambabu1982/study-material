@@ -1,0 +1,46 @@
+p
+Docker Commands:
+
+1.  docker run posgress:9.6 --> it will pull and run the image of progress-9.6 
+2.  docker ps ---> to see all the running container 
+3.  docker pull redis --> to pull the redis image
+4.  docker  images --> to list all the images you pulled
+5.  docker ps -a ---> showl all container running/non-running
+6.  docker stop <container0id> ---> to stop the container
+7.  docker run -p6000:6379 redis -->to bind the hostport(6000) to container port(6379) of redis
+8.  docker start <containerid> --> to start the container id
+9.  docker logs <containerId> ---> to see the logs of the container
+10. docker run -p60001:6379 --name redis-xyz redis:40. --> name the container with redis-xyz.
+11. docker exec -it <continer-id> /bin/bash -->to go inside the root folder of the container
+12. docker rm  <continer-id>  ---> remove continer-id
+13. docker network ls ---> see the list of networks
+14. docker network create mong-network  ---> create a network
+15. docker run -p 27017:2017 -e MONGOINITDB_ROOT_USERNAME=admin -e MONGOINITDB_ROOT_PASSWORD=admin --net mongo-network mongo
+16. docker run -p 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=password --net mongo-network --name mongo-express -e ME_CONFIG_MONGODB_SERVER=mongodb mongo express
+
+  
+
+docker image is the actual package
+docker container actually runing enviroment for image.
+container also bind wiith port  talk to application running of container
+container ports vs host port
+
+dockerfile:
+FROM node:lts-alpine
+
+ENV NODE_PATH=/app/node_modules
+
+WORKDIR /app
+
+COPY package*.json /app/
+RUN npm install
+
+COPY . /app
+RUN npm run build
+
+EXPOSE 80
+
+CMD ["npm", "start", "--", "-p", "80"]
+
+ 
+

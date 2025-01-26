@@ -1,0 +1,10 @@
+docker container create -it --name oracle-db -p1521:1521 -e ORACLE_PWD=welcome container-registry.oracle.co
+m/database/express:latest
+
+Database Info
+
+host: localhost
+port: 1521
+username: system
+password: welcome123
+sid: xe
